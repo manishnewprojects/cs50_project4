@@ -1,0 +1,54 @@
+
+{% extends "base.html" %}
+
+{% load static %} 
+
+{% block content %}
+
+<script type="text/javascript" src="{% static 'js/slider_show.js' %}"> </script>
+
+
+<!-- User Type -->
+<div align="center"> 
+
+<script type="text/javascript"> console.log("got", user_profile)</script>
+
+<label> Help us understand you better. <br> Look at the pictures below. Use the slider to mark preferences - go ahead, try it! </label>
+</div>
+
+<div><img class="msv_icon" id="left_emo"  style="margin-left: 10%;  float: left;"></div>
+<div><img class="msv_icon" id="right_emo" style="margin-right: 10%; float: right;" ></div>
+
+ <div id="slider"> </div> <!-- end of slider -->
+
+<div id="swappers">
+
+<div id="swapper-first" align="center"> 
+
+   <img class="msv_image" src="{% static 'personalization_engine/selection_group1.png' %}">  
+   <button class="next slider-navigators" frame_data="1">Next</button>
+
+</div>
+ 
+<div id="swapper-second" align="center" style="display:none;">
+
+   <img class="msv_image" src="{% static 'personalization_engine/selection_group2.png' %}">
+   <button class="back slider-navigators">Back</button>
+   <button class="next slider-navigators" frame_data="2">Next</button>
+
+
+</div>
+
+<div id="swapper-third" align="center" style="display:none;">
+ 
+  <img class="msv_image" src="{% static 'personalization_engine/selection_group3.png' %}">
+   <button class="back slider-navigators">Back</button>
+   <button class="done slider-navigators">Done</button>
+
+</div>
+
+
+</div>
+
+
+{% endblock %}

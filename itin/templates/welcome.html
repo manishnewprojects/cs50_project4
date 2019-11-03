@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div> <!-- begin arrival date -->
+  <br>
+  <label> When do you get to San Francisco?  </label>
+  <input class="custom-selector"  type="text" id="datepicker" value="  Click to select date">
+</div> <!-- end arrival date-->
+
+<p><!-- begin duration -->  
+<div> 
+  <label>How long are you staying?</label>
+      <select class="custom-selector" id="duration">
+          <option value="0">   Select days</option>
+          <option value="1">1 day</option>
+          <option value="2">2  days</option>
+          <option value="3">3 days</option>
+          <option value="4">4 days</option>
+          <option value="5">5 days</option>
+      </select>
+</div>
+</p><!-- end duration-->
+
+<script type="text/javascript">
+  
+  document.getElementById("duration").addEventListener("change", showSelectedItem);
+
+</script>
+
+Great! Now lets build your traveler profile <br>
+{% csrf_token %}
+<button type="button" class="btn btn-primary" id=build_profile > Lets do it!</button> 
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% load static %} 
+
+<a href="{% url 'index' %}">
+ <picture>
+    <source media="(max-width: 576px)"
+            srcset="{% static 'images/400w-lantern-guides-logo.png' %}">
+    <img src="{% static 'images/lantern-guides-logo.png' %}">
+  </picture>
+</a>
+ 
+<nav class="navbar navbar-light " style="background-color: #e3f2fd;">
+
+ 	<a class="nav-link active msv_nav_items" href="about.php"> Algorithms </a>
+ 	<a class="nav-link msv_nav_items" href="contact.php"> Account </a>
+
+</nav>

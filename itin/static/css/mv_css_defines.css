@@ -1,0 +1,109 @@
+/*!
+ * Start Bootstrap - 3 Col Portfolio (https://startbootstrap.com/template-overviews/3-col-portfolio)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-3-col-portfolio/blob/master/LICENSE)
+ */
+
+body {
+   background: rgba(179,215,255,1);
+  align-items: center;
+  text-align: center;
+ }
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.pagination {
+  margin-bottom: 30px;
+}
+
+.msv_responsive_nav_logo {
+    width: 90%;
+    height:auto;
+    border-style: none;
+    align-content: center;
+    #margin-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    #background-color:rgba(74, 144, 226, .3);
+ }
+
+.msv_nav_items {
+    font-size: 10px;
+    line-height: 20px;
+}
+
+.msv_place_header {
+  align-items: center;
+  text-align: center;
+}
+
+.msv_image {
+  max-width: 100%;
+  height: auto;   
+  margin: auto;
+}
+
+.msv_icon{
+
+  width: 10%;
+  height: auto;
+  margin-top: 18px;
+ 
+}
+
+.msv_banner{
+  background-color: rgba(74, 144, 226, .3);
+  font-family: vendana;
+  font-style: italic;
+
+}
+
+
+.custom-selector{
+   border-width: 1px;
+   border-color: black;
+   border-radius: 5px;
+   text-align: center;
+}
+
+.slider-navigators{
+  margin-top: 5px;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 5px;
+}
+
+
+/* Any adjustments for large displays go here */
+@media (min-width: 800px) {
+   
+  .msv_nav_items {
+  font-size: 30px;
+  line-height: 35px; 
+  }
+
+  .msv_responsive_nav_logo{
+    width: 50%;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .msv_place_header {
+  #align-items: center;
+  text-align: center;
+
+  }
+
+  .msv_image{
+    margin-left: 20px;
+  }
+}
+
+/* 700px for anything less than tablet portrait mode */
+@media (max-width: 700px) {
+    .msv_nav_items {
+        font-size: 20px;
+    }
+}
