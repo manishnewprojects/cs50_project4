@@ -23,12 +23,13 @@ admin.site.index_title = "Welcome to SF Personalized Itinerary Admin"
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
 
     path('', views.index, name='index'),     
     path('personalization_engine/', include('personalization_engine.urls')),
+    path('itin/', include('itin.urls')),
 
     #path('users/', include('users.urls')),  
-    #path('itin/', include('itin.urls')),
+    
+    path('admin/', admin.site.urls),
 
 ]

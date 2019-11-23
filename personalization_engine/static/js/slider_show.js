@@ -3,8 +3,7 @@ $(document).ready(function(){
 
 $('.done').click(function(){
 
-
-  user_profile[2]=user_score;
+  user_profile[3]=user_score;
   fetch_itinerary(user_profile);
  
 

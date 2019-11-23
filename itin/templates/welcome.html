@@ -2,7 +2,8 @@
 
 {% block content %}
 
-<div> <!-- begin arrival date -->
+{% if got_itin_info %}
+ <div> <!-- begin arrival date -->
   <br>
   <label> When do you get to San Francisco?  </label>
   <input class="custom-selector"  type="text" id="datepicker" value="  Click to select date">
@@ -28,8 +29,52 @@
 
 </script>
 
-Great! Now lets build your traveler profile <br>
 {% csrf_token %}
-<button type="button" class="btn btn-primary" id=build_profile > Lets do it!</button> 
+
+<button type="button" class="btn btn-primary" onclick='check_dates()'> Lock in dates </button> 
+
+
+{% else %}
+
+Arriving {{request.session.trip_date}} and staying for {{request.session.trip_length}} day(s) 
+<br> Great! Now lets build your traveler profile <br>
+
+<button type="button" class="btn btn-primary" onclick="location.href='{% url 'profile_builder' %}'"> Let's do it!</button> 
+
+
+{% endif %}
+
+
+<script type="text/javascript">
+
+  function check_dates(){
+
+    var data = {
+                'trip_date': user_profile[1],
+                'trip_length': user_profile[2],
+                'trip_season': user_profile[3],
+                };
+    var profile_URL="/personalization_engine/check_dates"
+    var csrftoken = Cookies.get('csrftoken');
+    got_itin_info=true;
+
+    $.ajax({
+      headers: { "X-CSRFToken": csrftoken },
+      url:profile_URL, 
+      method: 'POST',
+      data: data, 
+      success:function(response){
+        if(response === 'success'){ 
+          window.location = "{% url 'welcome' %}"; 
+        }
+        else{  
+          got_itin_info=false;
+          window.location = "{% url 'welcome' %}"; 
+        }
+      }
+
+    });
+}
+</script>
 
 {% endblock %}

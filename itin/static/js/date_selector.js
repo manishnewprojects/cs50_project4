@@ -3,7 +3,8 @@
  $( "#datepicker" ).datepicker({
        minDate: new Date(),
       onSelect: function(selectedDate){
-      user_profile[0]=get_trip_season(selectedDate); 
+      user_profile[1]=selectedDate;
+      user_profile[3]=get_trip_season(selectedDate); 
       //console.log("this is date", user_profile[0], "--goy--", selectedDate);
 
       }
@@ -23,38 +24,6 @@
       season=4;
     return season;
     } //end of function get_trip_season
-
-
-function call_profile_builder(){
-
-    var data = {'trip_duration': user_profile[0],
-                'trip_length': user_profile[1]
-                };
-    var profile_URL="personalization_engine/profile_builder"
-    var csrftoken = Cookies.get('csrftoken');
-
-
-    console.log("csrf", csrftoken)
-
-    $.ajax({
-      headers: { "X-CSRFToken": csrftoken },
-      url:profile_URL, 
-      method: 'POST',
-      data: data, 
-      success:function(response){
-        if(response === 'success'){ alert('Yay!'); }
-        else{ alert('Error! :('); }
-      }
-
-    });
-}
- 
- 
-
-$('#build_profile').click(function(){
-       console.log("got click", user_profile);
-       call_profile_builder();
-    }); 
 
 
 });

@@ -7,11 +7,16 @@
 
 <script type="text/javascript" src="{% static 'js/slider_show.js' %}"> </script>
 
+<script type="text/javascript">
+	
+	user_profile[0]="{{request.session.trip_date}}";
+	user_profile[1]="{{request.session.trip_length}}";
+	user_profile[2]="{{request.session.trip_season}}";
+                
+</script>
 
 <!-- User Type -->
 <div align="center"> 
-
-<script type="text/javascript"> console.log("got", user_profile)</script>
 
 <label> Help us understand you better. <br> Look at the pictures below. Use the slider to mark preferences - go ahead, try it! </label>
 </div>
@@ -39,6 +44,7 @@
 
 </div>
 
+
 <div id="swapper-third" align="center" style="display:none;">
  
   <img class="msv_image" src="{% static 'personalization_engine/selection_group3.png' %}">
@@ -49,6 +55,30 @@
 
 
 </div>
+{% csrf_token %}
 
+<script type="text/javascript">
+function fetch_itinerary(user_profile){
+
+console.log("got user: ", user_profile);
+
+var csrftoken = Cookies.get('csrftoken');
+ 
+ $.ajax({
+          headers: { "X-CSRFToken": csrftoken },
+          url: 'itin_builder',
+          method : 'POST',
+          data: {arr_date:user_profile[0], duration:user_score[1], season:user_score[2], user_score:user_profile[3]},
+          beforeSend: function() {
+          // things to do before submit},
+          },
+          success: function(response) {
+              //window.location = "{% url 'itin_builder' %}"; 
+              console.log(response);
+          }
+        }); 
+
+}
+</script>
 
 {% endblock %}
