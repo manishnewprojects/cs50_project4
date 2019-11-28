@@ -1,0 +1,99 @@
+
+{% extends "base.html" %}
+
+{% load static %} 
+
+{% block content %}
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#table_id0').DataTable({
+            "searching": false,
+            "paging"   : false,
+            "info"     : false, 
+             "ordering": false
+
+    });
+    $('#table_id1').DataTable({
+            "searching": false,
+            "paging"   : false,
+            "info"     : false, 
+             "ordering": false
+
+    });
+    $('#table_id2').DataTable({
+            "searching": false,
+            "paging"   : false,
+            "info"     : false, 
+             "ordering": false
+
+    });
+    $('#table_id3').DataTable({
+            "searching": false,
+            "paging"   : false,
+            "info"     : false, 
+             "ordering": false
+
+    });
+    $('#table_id4').DataTable({
+            "searching": false,
+            "paging"   : false,
+            "info"     : false, 
+             "ordering": false
+
+    });
+
+} );
+
+ </script>
+
+<!-- User Type -->
+
+{{sights}}
+{{restaurants}}
+
+{% for count in duration %}
+
+<table id="table_id{{count}}" class="display">
+
+	<thead> 
+        <tr>
+            <th> Day {{forloop.counter}}</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr>
+            <td><strong> Morning </strong> </td>
+          </tr>
+          <tr>
+            <td id="morning.sight.{{forloop.counter}}">  </td>
+          </tr>
+          <tr>
+            <td id="morning.restaurent.{{forloop.counter}}">  </td>
+          </tr>
+ 		  <tr>
+            <td><strong> Afternoon </strong> </td>
+          </tr>
+          <tr>
+            <td id="afternoon.sight.{{forloop.counter}}">  </td>
+          </tr>
+           <tr>
+            <td id="afternoon.restaurent.{{forloop.counter}}">  </td>
+          </tr>
+         <tr>
+            <td><strong> Evening </strong></td>
+          </tr>
+          <tr>
+            <td id="evening.sight.{{forloop.counter}}">  </td>
+          </tr>
+           <tr>
+            <td id="evening.restaurent.{{forloop.counter}}">  </td>
+          </tr>
+    </tbody>  
+
+</table> 
+
+ 
+{%endfor %}
+ 
+{% endblock %}

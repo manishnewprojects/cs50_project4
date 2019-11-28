@@ -19,7 +19,7 @@ class Sight(models.Model):
 class Restaurant(models.Model):
 	name 		= models.CharField(max_length = 100, blank=True, null=True)
 	yelp_link   = models.CharField(max_length = 100, blank=True, null=True)
-	locality	= models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+	zone		= models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 	timeofday 	= models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 	type_score 	= models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 

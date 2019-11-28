@@ -68,13 +68,16 @@ var csrftoken = Cookies.get('csrftoken');
           headers: { "X-CSRFToken": csrftoken },
           url: 'itin_builder',
           method : 'POST',
-          data: {arr_date:user_profile[0], duration:user_score[1], season:user_score[2], user_score:user_profile[3]},
+          data: {arr_date:user_profile[0], duration:user_profile[1], season:user_profile[2], user_score:user_profile[3]},
           beforeSend: function() {
           // things to do before submit},
           },
           success: function(response) {
-              //window.location = "{% url 'itin_builder' %}"; 
-              console.log(response);
+              window.location = "{% url 'render_itin' %}"; 
+              //console.log(response);
+              //$("html").html(response);
+  
+
           }
         }); 
 
