@@ -7,6 +7,9 @@
 
 <script type="text/javascript">
 $(document).ready( function () {
+
+  
+
     $('#table_id0').DataTable({
             "searching": false,
             "paging"   : false,
@@ -45,20 +48,47 @@ $(document).ready( function () {
 
 } );
 
+
  </script>
 
 <!-- User Type -->
 
-{{sights}}
-{{restaurants}}
+<script type="text/javascript"> count = 0 </script>
+{% for sight in sights %}
+<script type="text/javascript">
+
+sight_list[count] = [];
+
+sight_list[count][0]='{{sight.title}}'
+sight_list[count][1]='{{sight.url}}'
+count+=1
+
+</script>
+{%endfor%}
+
+<script type="text/javascript"> count = 0 </script>
+
+{% for restaurant in restaurants %}
+<script type="text/javascript">
+
+rest_list[count] = [];
+
+rest_list[count][0]='{{restaurant.name}}'
+rest_list[count][1]='{{restaurant.yelp_link}}'
+count+=1
+
+</script>
+{%endfor%} 
+ 
 
 {% for count in duration %}
+
 
 <table id="table_id{{count}}" class="display">
 
 	<thead> 
         <tr>
-            <th> Day {{forloop.counter}}</th>
+            <th> Day {{forloop.counter}} (Sight & Food)</th>
         </tr>
     </thead>
     <tbody>
@@ -69,7 +99,7 @@ $(document).ready( function () {
             <td id="morning.sight.{{forloop.counter}}">  </td>
           </tr>
           <tr>
-            <td id="morning.restaurent.{{forloop.counter}}">  </td>
+            <td id="morning.restaurant.{{forloop.counter}}">  </td>
           </tr>
  		  <tr>
             <td><strong> Afternoon </strong> </td>
@@ -78,7 +108,7 @@ $(document).ready( function () {
             <td id="afternoon.sight.{{forloop.counter}}">  </td>
           </tr>
            <tr>
-            <td id="afternoon.restaurent.{{forloop.counter}}">  </td>
+            <td id="afternoon.restaurant.{{forloop.counter}}">  </td>
           </tr>
          <tr>
             <td><strong> Evening </strong></td>
@@ -87,11 +117,25 @@ $(document).ready( function () {
             <td id="evening.sight.{{forloop.counter}}">  </td>
           </tr>
            <tr>
-            <td id="evening.restaurent.{{forloop.counter}}">  </td>
+            <td id="evening.restaurant.{{forloop.counter}}">  </td>
           </tr>
     </tbody>  
 
 </table> 
+
+<script type="text/javascript">
+
+  //console.log("sug", sight_list, "rest", rest_list, "count", '{{count}}');
+
+
+            document.getElementById('morning.sight.{{forloop.counter}}').innerHTML = "<a href="+sight_list[parseInt('{{count}}')*3][1]+">"+sight_list[parseInt('{{count}}')*3][0]+"</a>"
+            document.getElementById('afternoon.sight.{{forloop.counter}}').innerHTML = "<a href="+sight_list[parseInt('{{count}}')*3+1][1]+">"+sight_list[parseInt('{{count}}')*3+1][0]+"</a>"
+            document.getElementById('evening.sight.{{forloop.counter}}').innerHTML = "<a href="+sight_list[parseInt('{{count}}')*3+2][1]+">"+sight_list[parseInt('{{count}}')*3+2][0]+"</a>"
+
+            document.getElementById('morning.restaurant.{{forloop.counter}}').innerHTML = "<a href="+rest_list[parseInt('{{count}}')*3][1]+">"+rest_list[parseInt('{{count}}')*3][0]+"</a>"
+            document.getElementById('afternoon.restaurant.{{forloop.counter}}').innerHTML = "<a href="+rest_list[parseInt('{{count}}')*3+1][1]+">"+rest_list[parseInt('{{count}}')*3+1][0]+"</a>"
+            document.getElementById('evening.restaurant.{{forloop.counter}}').innerHTML = "<a href="+rest_list[parseInt('{{count}}')*3+2][1]+">"+rest_list[parseInt('{{count}}')*3+2][0]+"</a>"
+</script>
 
  
 {%endfor %}

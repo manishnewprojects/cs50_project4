@@ -50,6 +50,9 @@ $('.next').click(function(){
    $(this).parent().hide().next().show();//hide parent and show next
    
    user_score=$(this).closest('.next').attr('frame_data')+pos;
+   if (user_score >= 1000) {
+    user_score=1000
+   }
 
    sliderUI.reset();
 });

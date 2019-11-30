@@ -13,7 +13,7 @@ class Sight(models.Model):
 	type_score 	= models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 
 	def __str__(self):
-		return f"{self.title}, {self.url}"
+		return f"{self.title}, {self.url}, {self.locality}, {self.timeofday} "
 
 
 class Restaurant(models.Model):
