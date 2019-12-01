@@ -35,19 +35,12 @@ def itin_builder(request):
 		duration  =json.dumps(request.POST.get('duration'))
 		season    =json.dumps(request.POST.get('season'))
 
-		#print("user info got11111", duration,"---",season,"===",user_score,"[[[", visit_date)
-
 		user_score=re.findall('\d+', user_score)
 		duration  =re.findall('\d+', duration)
 		season    =re.findall('\d+', season)
 
-		#print("user info got222", user_score[0],"++",duration[0],"---",season[0],"===","[[[", visit_date)
-
-
 		match = re.search('\d{2}/\d{2}/\d{4}', visit_date)
 		vist_date = datetime.datetime.strptime(match.group(), '%m/%d/%Y').date()
-
-		#print("user info got333", user_score[0],"++",duration[0],"---",season[0],"===","[[[", visit_date)
 
 		request.session['user_score'] = int(user_score[0])
 		request.session['visit_date'] = visit_date
@@ -64,21 +57,17 @@ def render_itin(request):
 	duration = request.session['duration']
 	user_score = request.session['user_score']
 	
-	itin=[{}]
-	#restaurants = {}
-
 	sights = Sight.objects.filter(Q(min_duration__lte = duration))[:(duration*3)] 
 
 	restaurants = Restaurant.objects.filter(Q(type_score__gte = user_score))[:(duration*3)] 
-	#print("got sights", sights)
 
 	day=1
 
-	while (day <= duration):
-		print("sight",sights[day], "locality", sights[day].locality )
+	#while (day <= duration):
+	#	print("sight",sights[day], "locality", sights[day].locality )
 		#restaurants.update({'restaurant':Restaurant.objects.filter(Q(type_score__gte = user_score) & Q(zone = sights[day].locality) ).distinct()[:1]})
 		#itin[1].update({'sight':sights[1], 'restaurant':eating_place})
-		day+=1
+	#	day+=1
 		#print ("got rest", eating_place)
 		#restaurants.update(eating_place)
 	#for sight in sights:
